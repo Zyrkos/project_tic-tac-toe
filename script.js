@@ -1,58 +1,59 @@
-const startGameBtn = document.getElementById('start-game-btn');
-const playerChoiceX = document.getElementById('x-choice');
-const playerChoiceO = document.getElementById('o-choice');
-const gameBoard = document.getElementById('game-board');
-const gameBoardField = document.getElementsByClassName('game-board-field');
+const playerOne = document.getElementById("x-choice");
+const playerTwo = document.getElementById("o-choice");
+const gameBoard = document.getElementById("game-board");
+const gameBoardField = document.getElementsByClassName("game-board-field");
 
-/* function createPlayer(choice, score) {
-  let score = 0;
-  let choice = "X";
+/* function createPlayer(symbol, score) {
+  let playerOne;
+  let playerTwo;
+  let symbol;
 
-  function getChoice(choice) {
-    
-    return choice;
-  }
+  function getSymbol(symbol) {
+    playerOne.addEventListener("click", function () {
+      playerOneSymbol = "x";
+    });
+    playerTwo.addEventListener("click", function () {
+      playerTwoSymbol = "o";
+    });
 
-  function getScore() {
-    return score;
+    return symbol;
   }
 
   return {
-    getChoice,
-    getScore,
+    getSymbol,
   };
 } */
 
-const gameBoardModule = (function () {
+/* (function () {
+  const startGameBtn = document.getElementById("start-game-btn");
+
+  startGameBtn.addEventListener("click", function () {
+    createGameBoard();
+    startGameBtn.removeEventListener("click", arguments.callee); //to stop the start game from deploying more grids after one click
+  });
+
   function createGameBoard() {
-    const gameBoardDiv = document.createElement('div');
-    gameBoardDiv.classList.add('game-board');
-    gameBoardDiv.id = 'game-board';
+    const gameBoardDiv = document.createElement("div");
+    gameBoardDiv.classList.add("game-board");
+    gameBoardDiv.id = "game-board";
 
     for (let i = 0; i < 9; i++) {
-      const gameBoardFieldDiv = document.createElement('div');
-      gameBoardFieldDiv.classList.add('game-board-field');
+      const gameBoardFieldDiv = document.createElement("div");
+      gameBoardFieldDiv.classList.add("game-board-field");
       gameBoardFieldDiv.id = `game-board-field-${i}`;
       gameBoardDiv.appendChild(gameBoardFieldDiv);
     }
 
-    return gameBoardDiv;
+    document.body.appendChild(gameBoardDiv);
   }
-
-  return { createGameBoard };
-})();
-
-export default gameBoardModule;
-
-
-
+})(); */
 
 function gameFlow() {
   function playerTurn() {
     for (let i = 0; i < gameBoardField.length; i++) {
-      gameBoardField[i].addEventListener('click', function () {
-        this.textContent = 'X';
-        this.id += '-X';
+      gameBoardField[i].addEventListener("click", function () {
+        this.textContent = "X";
+        this.id += "-X";
       });
     }
   }
@@ -63,5 +64,3 @@ function gameFlow() {
 
 const game = gameFlow();
 game.playerTurn();
-
-
