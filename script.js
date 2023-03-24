@@ -1,26 +1,29 @@
-function createPlayer(name, symbol) {
+const playerChoiceX = document.getElementById("x-choice");
+const playerChoiceO = document.getElementById("o-choice");
+const gameBoard = document.getElementById("game-board")
+const gameBoardField = document.getElementById("game-board-field")
+
+
+
+
+
+
+
+function createPlayer(choice) {
   let score = 0;
 
-  function getName() {
-    return name;
-  }
-
-  function getSymbol() {
-    return symbol;
+  function getChoice() {
+    return choice;
   }
 
   function getScore() {
     return score;
   }
 
-  function incrementScore() {
-    score++;
-  }
-
   return {
-    getName,
-    getSymbol,
+    getChoice,
     getScore,
-    incrementScore
-  }
+  };
 }
+
+
