@@ -26,7 +26,6 @@ const startGameBtn = document.getElementById("start-game-btn");
 } */
 
 (function () {
-
   startGameBtn.addEventListener("click", function () {
     createGameBoard();
     startGameBtn.removeEventListener("click", arguments.callee); //to stop the start game from deploying more grids after one click
@@ -37,15 +36,19 @@ const startGameBtn = document.getElementById("start-game-btn");
     gameBoardDiv.classList.add("game-board");
     gameBoardDiv.id = "game-board";
 
+    const gameBoardFields = [];
+
     for (let i = 0; i < 9; i++) {
       const gameBoardFieldDiv = document.createElement("div");
       gameBoardFieldDiv.classList.add("game-board-field");
       gameBoardFieldDiv.id = `game-board-field-${i}`;
       gameBoardDiv.appendChild(gameBoardFieldDiv);
+
+      gameBoardFields.push(gameBoardFieldDiv);
     }
 
     document.body.appendChild(gameBoardDiv);
-    return Promise.resolve();
+    return 
   }
 })();
 
@@ -65,4 +68,4 @@ function gameFlow() {
 }
 
 const game = gameFlow();
-game.playerTurn();
+game.playerTurn()
