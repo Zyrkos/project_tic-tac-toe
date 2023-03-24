@@ -23,24 +23,32 @@ const gameBoardField = document.getElementsByClassName('game-board-field');
   };
 } */
 
-function createGameBoard() {
-  const gameBoardDiv = document.createElement('div');
-  gameBoardDiv.classList.add('game-board');
-  gameBoardDiv.id = 'game-board';
+const gameBoardModule = (function () {
+  function createGameBoard() {
+    const gameBoardDiv = document.createElement('div');
+    gameBoardDiv.classList.add('game-board');
+    gameBoardDiv.id = 'game-board';
 
-  for (let i = 0; i < 9; i++) {
-    const gameBoardFieldDiv = document.createElement('div');
-    gameBoardFieldDiv.classList.add('game-board-field');
-    gameBoardFieldDiv.id = `game-board-field-${i}`;
-    gameBoardDiv.appendChild(gameBoardFieldDiv);
+    for (let i = 0; i < 9; i++) {
+      const gameBoardFieldDiv = document.createElement('div');
+      gameBoardFieldDiv.classList.add('game-board-field');
+      gameBoardFieldDiv.id = `game-board-field-${i}`;
+      gameBoardDiv.appendChild(gameBoardFieldDiv);
+    }
+
+    return gameBoardDiv;
   }
 
-  return gameBoardDiv;
-}
+  return { createGameBoard };
+})();
+
+export default gameBoardModule;
+
+
+
 
 function gameFlow() {
   function playerTurn() {
-    const gameBoardField = document.getElementsByClassName('game-board-field');
     for (let i = 0; i < gameBoardField.length; i++) {
       gameBoardField[i].addEventListener('click', function () {
         this.textContent = 'X';
