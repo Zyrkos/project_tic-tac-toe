@@ -4,8 +4,4 @@
   }
 
 
-  {
-    "scripts": {
-      "lint": "eslint ."
-    }
-  }
+  
