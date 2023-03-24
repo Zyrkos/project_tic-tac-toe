@@ -2,6 +2,7 @@ const playerOne = document.getElementById("x-choice");
 const playerTwo = document.getElementById("o-choice");
 const gameBoard = document.getElementById("game-board");
 const gameBoardField = document.getElementsByClassName("game-board-field");
+const startGameBtn = document.getElementById("start-game-btn");
 
 /* function createPlayer(symbol, score) {
   let playerOne;
@@ -24,8 +25,7 @@ const gameBoardField = document.getElementsByClassName("game-board-field");
   };
 } */
 
-/* (function () {
-  const startGameBtn = document.getElementById("start-game-btn");
+(function () {
 
   startGameBtn.addEventListener("click", function () {
     createGameBoard();
@@ -45,11 +45,13 @@ const gameBoardField = document.getElementsByClassName("game-board-field");
     }
 
     document.body.appendChild(gameBoardDiv);
+    return Promise.resolve();
   }
-})(); */
+})();
 
 function gameFlow() {
   function playerTurn() {
+    const gameBoardField = document.getElementsByClassName("game-board-field");
     for (let i = 0; i < gameBoardField.length; i++) {
       gameBoardField[i].addEventListener("click", function () {
         this.textContent = "X";
