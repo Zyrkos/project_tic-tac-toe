@@ -43,35 +43,31 @@ const gameBoard = (function () {
       field.setAttribute("data-index", i);
       field.addEventListener("click", (e) => {
         const clickedIndex = e.target.getAttribute("data-index");
-        boardFiels[clickedIndex] = "X";
+        boardFields[clickedIndex] = "";
       });
 
       board.appendChild(field);
     }
 
     document.getElementById("game").appendChild(board);
-    
   };
   return {
-    createBoard
-  }
+    createBoard,
+  };
 })();
 
+const gameFlow = (function () {
+  let currentPlayer = "X";
 
-
-
-
-function gameFlow() {
-  function playerTurn() {
-    const gameBoardField = document.getElementsByClassName("game-board-field");
-    for (let i = 0; i < gameBoardField.length; i++) {
-      gameBoardField[i].addEventListener("click", function () {
-        this.textContent = "X";
-        this.id += "-X";
-      });
+  const playerTurn = (index) => {
+    const field = document.querySelector(`.field[data-index="${index}"]`);
+    if (gameBoard.boardFields[index] === "") {
+      field.textContent = currentPlayer;
+      gameBoard.boardFields[index] = currentPlayer;
     }
-  }
+  };
+
   return {
     playerTurn,
   };
-}
+})();
