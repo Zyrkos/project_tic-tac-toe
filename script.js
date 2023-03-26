@@ -56,7 +56,10 @@ const gameBoard = (function () {
   };
 })();
 
-const gameFlow = (function () {
+
+
+
+/* const gameFlow = (function () {
   let currentPlayer = "X";
 
   const playerTurn = (index) => {
@@ -71,3 +74,14 @@ const gameFlow = (function () {
     playerTurn,
   };
 })();
+ */
+
+
+
+const fields = document.getElementsByClassName("field");
+for (let i = 0; i < fields.length; i++) {
+  fields[i].addEventListener("click", () => {
+    console.log("mouse ")
+  });
+}
+
