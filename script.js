@@ -51,12 +51,26 @@ const gameBoard = (function () {
 
     document.getElementById("game").appendChild(board);
   };
+
+
+
+  
+
   return {
     createBoard,
   };
+
+  
 })();
 
-
+/* const playerTurn = () => {
+  const field = document.getElementsByClassName("field");
+  
+    field.addEventListener("click", function () {
+      this.textContent = "X";
+      this.id += "-X";
+    });
+  }; */
 
 
 /* const gameFlow = (function () {
@@ -81,7 +95,8 @@ const gameBoard = (function () {
 const fields = document.getElementsByClassName("field");
 for (let i = 0; i < fields.length; i++) {
   fields[i].addEventListener("click", () => {
-    console.log("mouse ")
+    fields[i].textContent = "X";
+    
   });
 }
 

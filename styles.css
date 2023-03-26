@@ -37,6 +37,7 @@ html {
 }
 
 .field {
+  
   font-size: 4rem;
   display: flex;
   width: 100px;
@@ -51,3 +52,4 @@ html {
   width: auto;
   margin-top: 10px;
 }
+
