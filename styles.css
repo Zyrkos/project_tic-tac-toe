@@ -27,7 +27,7 @@ html {
   height: 50px;
 }
 
-.game-board {
+.board {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
@@ -36,7 +36,7 @@ html {
   margin-top: 100px;
 }
 
-.game-board-field {
+.field {
   font-size: 4rem;
   display: flex;
   width: 100px;
