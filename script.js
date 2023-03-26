@@ -52,28 +52,12 @@ const gameBoard = (function () {
     document.getElementById("game").appendChild(board);
   };
 
-
-
-  
-
   return {
     createBoard,
   };
-
-  
 })();
 
-/* const playerTurn = () => {
-  const field = document.getElementsByClassName("field");
-  
-    field.addEventListener("click", function () {
-      this.textContent = "X";
-      this.id += "-X";
-    });
-  }; */
-
-
-/* const gameFlow = (function () {
+const gameFlow = (function (gameBoard) {
   let currentPlayer = "X";
 
   const playerTurn = (index) => {
@@ -88,15 +72,12 @@ const gameBoard = (function () {
     playerTurn,
   };
 })();
- */
 
-
-
+/* 
 const fields = document.getElementsByClassName("field");
-for (let i = 0; i < fields.length; i++) {
-  fields[i].addEventListener("click", () => {
-    fields[i].textContent = "X";
-    
-  });
-}
-
+  for (let i = 0; i < fields.length; i++) {
+    fields[i].addEventListener("mouseenter", () => {
+      console.log("mouse")
+      
+    });
+  } */
