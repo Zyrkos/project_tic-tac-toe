@@ -1,25 +1,22 @@
-const player = () => {
-  let currentPlayer = "";
+const player = (() => {
+  let currentPlayer = "X";
   let playerOne = { symbol: "X" };
   let playerTwo = { symbol: "O" };
-
   const getCurrentPlayer = () => {
-    if (currentPlayer === playerOne) {
+    if (currentPlayer === playerOne.symbol) {
       return playerOne;
     } else {
       return playerTwo;
     }
   };
+  return { getCurrentPlayer };
+})();
 
-  currentPlayer = playerOne;
-  return getCurrentPlayer();
-};
-
-const gameBoard = (function () {
+const board = (() => {
   const boardFields = ["", "", "", "", "", "", "", "", ""];
   const button = document.getElementById("start-game-btn");
   button.addEventListener("click", function () {
-    gameBoard.createBoard();
+    board.createBoard();
     button.removeEventListener("click", arguments.callee); //to stop the start game from deploying more grids after one click
   });
 
@@ -34,7 +31,7 @@ const gameBoard = (function () {
       field.addEventListener("click", (e) => {
         const clickedIndex = e.target.getAttribute("data-index");
         if (boardFields[clickedIndex] === "") {
-          const currentPlayer = game.getCurrentPlayer();
+          const currentPlayer = player.getCurrentPlayer();
           e.target.textContent = currentPlayer.symbol;
           boardFields[clickedIndex] = currentPlayer.symbol;
 
@@ -55,13 +52,16 @@ const gameBoard = (function () {
 
   return {
     createBoard,
+    // add this to return the boardFields array to be used in other modules
   };
 })();
 
-const gameFlow = () => {
+const game = (() => {
   const changeTurn = () => {};
 
   const checkForWinner = () => {};
 
   const endGame = () => {};
-};
+
+  return { changeTurn, checkForWinner, endGame };
+})();
