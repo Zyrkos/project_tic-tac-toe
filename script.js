@@ -1,7 +1,13 @@
 const player = () => {
   const getCurrentPlayer = () => {
-    const btnX = document.getElementById("x-choice");
+    /* const btnX = document.getElementById("x-choice");
     const btnO = document.getElementById("o-choice");
+    const symbolX = "X";
+    const symbolO = "O"; */
+
+
+
+
   };
 };
 
@@ -24,9 +30,10 @@ const gameBoard = (function () {
       field.addEventListener("click", (e) => {
         const clickedIndex = e.target.getAttribute("data-index");
         if (boardFields[clickedIndex] === "") {
-          const currentPlayer = game.getCurrentPlayer();
+          /* const currentPlayer = game.getCurrentPlayer();
           e.target.textContent = currentPlayer.symbol;
-          boardFields[clickedIndex] = currentPlayer.symbol;
+          boardFields[clickedIndex] = currentPlayer.symbol; */
+          field.textContent ="X";
           const winner = game.checkForWinner();
           if (winner !== null) {
             game.endGame(winner);
