@@ -1,14 +1,18 @@
 const player = () => {
+  let currentPlayer = "";
+  let playerOne = { symbol: "X" };
+  let playerTwo = { symbol: "O" };
+
   const getCurrentPlayer = () => {
-    /* const btnX = document.getElementById("x-choice");
-    const btnO = document.getElementById("o-choice");
-    const symbolX = "X";
-    const symbolO = "O"; */
-
-
-
-
+    if (currentPlayer === playerOne) {
+      return playerOne;
+    } else {
+      return playerTwo;
+    }
   };
+
+  currentPlayer = playerOne;
+  return getCurrentPlayer();
 };
 
 const gameBoard = (function () {
@@ -30,10 +34,10 @@ const gameBoard = (function () {
       field.addEventListener("click", (e) => {
         const clickedIndex = e.target.getAttribute("data-index");
         if (boardFields[clickedIndex] === "") {
-          /* const currentPlayer = game.getCurrentPlayer();
+          const currentPlayer = game.getCurrentPlayer();
           e.target.textContent = currentPlayer.symbol;
-          boardFields[clickedIndex] = currentPlayer.symbol; */
-          field.textContent ="X";
+          boardFields[clickedIndex] = currentPlayer.symbol;
+
           const winner = game.checkForWinner();
           if (winner !== null) {
             game.endGame(winner);
@@ -61,13 +65,3 @@ const gameFlow = () => {
 
   const endGame = () => {};
 };
-
-/* const playerTurn = (index) => {
-  const boardFields = ["", "", "", "", "", "", "", "", ""];
-  const field = document.querySelector(`.field[data-index="${index}"]`);
-  if (boardFields[index] === "") {
-    field.textContent = "X";
-    boardFields[index] = "X";
-  }
-};
- */
