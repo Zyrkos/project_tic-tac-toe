@@ -1,29 +1,3 @@
-/* const playerOne = document.getElementById("x-choice");
-const playerTwo = document.getElementById("o-choice");
-const gameBoard = document.getElementById("game-board");
-const startGameBtn = document.getElementById("start-game-btn"); */
-
-/* function createPlayer(symbol, score) {
-  let playerOne;
-  let playerTwo;
-  let symbol;
-
-  function getSymbol(symbol) {
-    playerOne.addEventListener("click", function () {
-      playerOneSymbol = "x";
-    });
-    playerTwo.addEventListener("click", function () {
-      playerTwoSymbol = "o";
-    });
-
-    return symbol;
-  }
-
-  return {
-    getSymbol,
-  };
-} */
-
 const gameBoard = (function () {
   const boardFields = ["", "", "", "", "", "", "", "", ""];
 
@@ -57,27 +31,11 @@ const gameBoard = (function () {
   };
 })();
 
-const gameFlow = (function (gameBoard) {
-  let currentPlayer = "X";
-
-  const playerTurn = (index) => {
-    const field = document.querySelector(`.field[data-index="${index}"]`);
-    if (gameBoard.boardFields[index] === "") {
-      field.textContent = currentPlayer;
-      gameBoard.boardFields[index] = currentPlayer;
-    }
-  };
-
-  return {
-    playerTurn,
-  };
-})();
-
-/* 
-const fields = document.getElementsByClassName("field");
-  for (let i = 0; i < fields.length; i++) {
-    fields[i].addEventListener("mouseenter", () => {
-      console.log("mouse")
-      
-    });
-  } */
+const playerTurn = (index) => {
+  const boardFields = ["", "", "", "", "", "", "", "", ""];
+  const field = document.querySelector(`.field[data-index="${index}"]`);
+  if (boardFields[index] === "") {
+    field.textContent = "X";
+    boardFields[index] = "X";
+  }
+};

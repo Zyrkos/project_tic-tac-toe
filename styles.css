@@ -28,6 +28,7 @@ html {
 }
 
 .board {
+  z-index: 0;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
@@ -37,6 +38,7 @@ html {
 }
 
 .field {
+  z-index: 0;
   
   font-size: 4rem;
   display: flex;
