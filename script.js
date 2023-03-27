@@ -31,6 +31,7 @@ const board = (() => {
       field.addEventListener("click", (e) => {
         const clickedIndex = e.target.getAttribute("data-index");
         if (boardFields[clickedIndex] === "") {
+          console.log(boardFields);
           const currentPlayer = player.getCurrentPlayer();
           e.target.textContent = currentPlayer.symbol;
           boardFields[clickedIndex] = currentPlayer.symbol;
@@ -63,5 +64,8 @@ const game = (() => {
 
   const endGame = () => {};
 
-  return { changeTurn, checkForWinner, endGame };
+  const resetGame = () => {};
+
+
+  return { changeTurn, checkForWinner, endGame, resetGame };
 })();
