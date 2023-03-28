@@ -10,7 +10,7 @@ const player = (() => {
       return playerTwo;
     }
   };
-  return { getCurrentPlayer };
+  return { getCurrentPlayer, playerOne, playerTwo };
 })();
 
 const board = (() => {
@@ -32,6 +32,7 @@ const board = (() => {
       field.addEventListener("click", (e) => {
         const clickedIndex = e.target.getAttribute("data-index");
         if (boardFields[clickedIndex] === "") {
+          console.log(boardFields);
           const currentPlayer = player.getCurrentPlayer();
           e.target.textContent = currentPlayer.symbol;
           boardFields[clickedIndex] = currentPlayer.symbol;
@@ -52,11 +53,7 @@ const board = (() => {
   };
 
   const resetGame = () => {
-    boardFields = ["", "", "", "", "", "", "", "", ""];
-    const fields = document.querySelectorAll(".field");
-    fields.forEach((field) => {
-      field.textContent = "";
-    });
+    location.reload();
   };
 
   return {
@@ -96,6 +93,10 @@ const game = (() => {
         return boardFields[a]; // Return the winning symbol ("X" or "O")
       }
     }
+    const allFilled = boardFields.every((field) => field !== "");
+    if (allFilled) {
+      console.log("draw"); // Return a special value to indicate a draw
+    }
 
     return null; // Return null if there is no winner yet
   };
@@ -105,9 +106,13 @@ const game = (() => {
       const symbol = winner;
       const message = `${symbol} has won!`;
       console.log(message);
-      location.reload(); //reloads the page after 
+      location.reload();
     }
   };
+  const resetButton = document.getElementById("reset-game-btn");
+  resetButton.addEventListener("click", () => {
+    board.resetGame();
+  });
 
   return { changeTurn, checkForWinner, endGame };
 })();
