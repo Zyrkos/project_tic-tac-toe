@@ -14,7 +14,7 @@ const player = (() => {
 })();
 
 const board = (() => {
-  const boardFields = ["", "", "", "", "", "", "", "", ""];
+  let boardFields = ["", "", "", "", "", "", "", "", ""];
   const button = document.getElementById("start-game-btn");
   button.addEventListener("click", function () {
     board.createBoard();
@@ -51,9 +51,18 @@ const board = (() => {
     document.getElementById("game").appendChild(board);
   };
 
+  const resetGame = () => {
+    boardFields = ["", "", "", "", "", "", "", "", ""];
+    const fields = document.querySelectorAll(".field");
+    fields.forEach((field) => {
+      field.textContent = "";
+    });
+  };
+
   return {
     createBoard,
-    boardFields
+    boardFields,
+    resetGame,
   };
 })();
 
@@ -96,10 +105,9 @@ const game = (() => {
       const symbol = winner;
       const message = `${symbol} has won!`;
       console.log(message);
+      location.reload(); //reloads the page after 
     }
   };
 
-  const resetGame = () => {};
-
-  return { changeTurn, checkForWinner, endGame, resetGame };
+  return { changeTurn, checkForWinner, endGame };
 })();
