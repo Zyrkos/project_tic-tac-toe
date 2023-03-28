@@ -32,18 +32,16 @@ const board = (() => {
       field.addEventListener("click", (e) => {
         const clickedIndex = e.target.getAttribute("data-index");
         if (boardFields[clickedIndex] === "") {
-          console.log(boardFields);
           const currentPlayer = player.getCurrentPlayer();
           e.target.textContent = currentPlayer.symbol;
           boardFields[clickedIndex] = currentPlayer.symbol;
-          game.changeTurn();
 
-          /* const winner = game.checkForWinner();
+          const winner = game.checkForWinner();
           if (winner !== null) {
             game.endGame(winner);
           } else {
             game.changeTurn();
-          } */
+          }
         }
       });
 
@@ -55,28 +53,51 @@ const board = (() => {
 
   return {
     createBoard,
-    // add this to return the boardFields array to be used in other modules
+    boardFields
   };
 })();
 
 const game = (() => {
   const changeTurn = () => {
     const currentPlayer = player.getCurrentPlayer();
-    currentPlayer.symbol === "X" ? currentPlayer.symbol = "O" : currentPlayer.symbol = "X";
+    currentPlayer.symbol === "X"
+      ? (currentPlayer.symbol = "O")
+      : (currentPlayer.symbol = "X");
   };
 
   const checkForWinner = () => {
-    0, 1, 2;
-    3, 4, 5;
-    6, 7, 8;
+    const boardFields = board.boardFields;
     const winner = [
       [0, 1, 2],
       [3, 4, 5],
       [6, 7, 8],
+      [0, 3, 6],
+      [1, 4, 7],
+      [2, 5, 8],
+      [0, 4, 8],
+      [2, 4, 6],
     ];
+    for (let i = 0; i < winner.length; i++) {
+      const [a, b, c] = winner[i];
+      if (
+        boardFields[a] &&
+        boardFields[a] === boardFields[b] &&
+        boardFields[a] === boardFields[c]
+      ) {
+        return boardFields[a]; // Return the winning symbol ("X" or "O")
+      }
+    }
+
+    return null; // Return null if there is no winner yet
   };
 
-  const endGame = () => {};
+  const endGame = (winner) => {
+    if (winner) {
+      const symbol = winner;
+      const message = `${symbol} has won!`;
+      console.log(message);
+    }
+  };
 
   const resetGame = () => {};
 
